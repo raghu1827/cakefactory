@@ -48,29 +48,27 @@ CakeFactory is a full-fledged e-commerce application built using Spring Boot for
 
 ### Steps to Set Up Locally
 1. **Clone the repository**:
-   ```bash
+ 
    git clone https://github.com/your-username/cakefactory.git
    cd cakefactory
-   ```
+
 2. **Build the Spring Boot application**:
-   ```bash
+  
    mvn clean install
-   ```
+  
 3. **Run the application locally**:
-   ```bash
+   
    mvn spring-boot:run
-   ```
 
 ### Docker Setup (Optional)
 1. **Build Docker image**:
-   ```bash
+  
    docker build -t cakefactory .
-   ```
+   
 2. **Run Docker container**:
-   ```bash
+  
    docker run -p 8080:8080 cakefactory
-   ```
-
+   
 ---
 
 ## CI/CD Integration
@@ -92,51 +90,46 @@ CakeFactory is a full-fledged e-commerce application built using Spring Boot for
 
 ## Database Setup
 1. **Create Database**:
-   ```bash
+  
    mysql -u root -p
    CREATE DATABASE cakefactory;
-   ```
+
 2. **Create User**:
-   ```sql
+   sql
    CREATE USER 'cakeuser'@'%' IDENTIFIED BY 'Admin#123';
    GRANT ALL PRIVILEGES ON cakefactory.* TO 'cakeuser'@'%';
    FLUSH PRIVILEGES;
-   ```
+   
 3. **Configure Database Connection**:
    Update `application.properties`:
-   ```properties
+   properties
    spring.datasource.url=jdbc:mysql://localhost:3306/cakefactory
    spring.datasource.username=cakeuser
    spring.datasource.password=Admin#123
-   ```
-
+   
 ---
 
 ## Deployment Process
 1. **Launch EC2 Instance**:
    - Create an Amazon Linux 2023 EC2 instance on AWS.
 2. **SSH into Instance**:
-   ```bash
+  
    ssh -i your-key.pem ec2-user@your-ec2-public-ip
-   ```
+   
 3. **Install Java and Docker**:
    - Install Java:
-     ```bash
      sudo yum install java-11-openjdk-devel
-     ```
+   
    - Install Docker:
-     ```bash
      sudo yum install docker
      sudo service docker start
      sudo usermod -aG docker ec2-user
-     ```
+     
 4. **Deploy Application**:
    - Copy the built `.jar` file or Docker image to the EC2 instance.
    - Run the application using Docker:
-     ```bash
      docker run -p 8080:8080 cakefactory
-     ```
-
+   
 ---
 
 ## Monitoring & Security
